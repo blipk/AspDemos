@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GenericServices.StatusGeneric" Version="1.1.0" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.0-rc.2.21480.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.0-rc.2.21480.5" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0-rc.2.21480.5" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <PackageId>EfCore.SoftDeleteServices</PackageId>
+    <PackageVersion>1.1.3</PackageVersion>
+    <Version>1.1.3</Version>
+    <AssemblyVersion>1.1.3.0</AssemblyVersion>
+    <FileVersion>1.1.3.0</FileVersion>
+    <Authors>Jon P Smith</Authors>
+    <Description>Services to provide simple soft delete and cascade soft delete in EF Core.</Description>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageReleaseNotes>
+      Bug Fix - Handling one-to-one with foreign key in primary entity - see issue #1
+    </PackageReleaseNotes>
+    <Copyright>Copyright (c) 2020 Jon P Smith. Licenced under MIT licence</Copyright>
+    <PackageTags>Entity Framework Core</PackageTags>
+    <IsPackable>true</IsPackable>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <ProjectUrl>https://github.com/JonPSmith/EfCore.SoftDeleteServices</ProjectUrl>
+    <RepositoryUrl>https://github.com/JonPSmith/EfCore.SoftDeleteServices</RepositoryUrl>
+    <PackageIcon>SoftDeleteServicesNuGetIcon128.png</PackageIcon>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="SoftDeleteServicesNuGetIcon128.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>SoftDeleteServices.xml</DocumentationFile>
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+
+</Project>

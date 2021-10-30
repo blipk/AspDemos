@@ -1,0 +1,43 @@
+﻿@model AspDemos.Areas.Admin.Models.Identity.RegisterViewModel
+@{
+
+}
+
+<form id="registerForm" asp-area="Admin" asp-controller="Accounts" asp-action="Register" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-floating">
+        <input asp-for="Username" class="form-control" autocomplete="username" aria-required="true" />
+        <label asp-for="Username"></label>
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>
+    <div class="form-floating">
+        <input asp-for="Email" class="form-control" autocomplete="username" aria-required="true" />
+        <label asp-for="Email"></label>
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-floating">
+        <label asp-for="FirstName"></label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+    <div class="form-floating">
+        <label asp-for="LastName"></label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+    <div class="form-floating">
+        <label asp-for="Dob"></label>
+        <input asp-for="Dob" class="form-control" />
+        <span asp-validation-for="Dob" class="text-danger"></span>
+    </div>
+    <div class="form-floating">
+        <input asp-for="Password" class="form-control" autocomplete="new-password" aria-required="true" />
+        <label asp-for="Password"></label>
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="form-floating">
+        <input asp-for="ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
+        <label asp-for="ConfirmPassword"></label>
+        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+    </div>
+</form>

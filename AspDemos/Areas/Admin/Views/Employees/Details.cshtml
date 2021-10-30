@@ -1,0 +1,76 @@
+﻿@model AspDemos.Models.Employee
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div class="container-fluid">
+    <dl class="row">
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.EmployeeNumber)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.EmployeeNumber)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Address.NumberAndStreet)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Address.NumberAndStreet)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Address.Suburb)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Address.Suburb)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Address.City)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Address.City)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Address.State)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Address.State)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Address.PostCode)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Address.PostCode)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.FacebookProfile)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.FacebookProfile)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.TwitterProfile)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.TwitterProfile)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.InstagramProfile)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.InstagramProfile)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.LinkedInProfile)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.LinkedInProfile)
+        </dd>
+    </dl>
+</div>
+<div>
+    <!--<a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>-->
+    <a class="btn btn-primary" style="width:auto" asp-action="Index" close-modal>Cancel</a>
+</div>

@@ -1,0 +1,76 @@
+﻿@model AspDemos.Areas.Admin.Models.Employees.EmployeeViewModel
+
+@{
+    ViewData["Title"] = $"Edit Employee - {Model.Employee.ApplicationUser.FirstName} {Model.Employee.ApplicationUser.LastName}";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<hr />
+<div class="row">
+    <div class="">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Employee.Id" />
+            <input type="hidden" asp-for="Employee.ApplicationUser.Id" />
+            <div class="form-group">
+                <label asp-for="Employee.EmployeeNumber" class="control-label"></label>
+                <input asp-for="Employee.EmployeeNumber" class="form-control" />
+                <span asp-validation-for="Employee.EmployeeNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Employee.Address.NumberAndStreet" class="control-label"></label>
+                <input asp-for="Employee.Address.NumberAndStreet" class="form-control" />
+                <span asp-validation-for="Employee.Address.NumberAndStreet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Employee.Address.Suburb" class="control-label"></label>
+                <input asp-for="Employee.Address.Suburb" class="form-control" />
+                <span asp-validation-for="Employee.Address.Suburb" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Employee.Address.City" class="control-label"></label>
+                <input asp-for="Employee.Address.City" class="form-control" />
+                <span asp-validation-for="Employee.Address.City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Employee.Address.State" class="control-label"></label>
+                <input asp-for="Employee.Address.State" class="form-control" />
+                <span asp-validation-for="Employee.Address.State" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Employee.Address.PostCode" class="control-label"></label>
+                <input asp-for="Employee.Address.PostCode" class="form-control" />
+                <span asp-validation-for="Employee.Address.PostCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Employee.FacebookProfile" class="control-label"></label>
+                <input asp-for="Employee.FacebookProfile" class="form-control" />
+                <span asp-validation-for="Employee.FacebookProfile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Employee.TwitterProfile" class="control-label"></label>
+                <input asp-for="Employee.TwitterProfile" class="form-control" />
+                <span asp-validation-for="Employee.TwitterProfile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Employee.InstagramProfile" class="control-label"></label>
+                <input asp-for="Employee.InstagramProfile" class="form-control" />
+                <span asp-validation-for="Employee.InstagramProfile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Employee.LinkedInProfile" class="control-label"></label>
+                <input asp-for="Employee.LinkedInProfile" class="form-control" />
+                <span asp-validation-for="Employee.LinkedInProfile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a class="btn btn-primary" style="width:auto" asp-action="Index" close-modal>Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

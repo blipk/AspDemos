@@ -1,0 +1,45 @@
+﻿@model AspDemos.Areas.Admin.Models.PermissionViewModel
+@{
+
+}
+<h1>Permissions for @Model.RoleName</h1>
+<br />
+<div class="card">
+    <div id="viewAll" class="card-body table-responsive">
+        <form asp-controller="Permissions" method="post" asp-action="Update" class="d-inline">
+            <input asp-for="@Model.RoleId" type="hidden" />
+            <table class="table table-striped" id="permissionTable">
+                <thead>
+                    <tr>
+                        <th>Module</th>
+                        <th>Permissions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.RolePermissionGroups.Count(); i++) {
+                        <tr>
+                            <td>
+                                <input asp-for="@Model.RolePermissionGroups[i].Module" type="hidden" />
+                                @Model.RolePermissionGroups[i].Module
+                            </td>
+                            <td>
+                                @for (int ii = 0; ii < Model.RolePermissionGroups[i].Actions.Count(); ii++) {
+                                    <input asp-for="@Model.RolePermissionGroups[i].Actions[ii].Selected" class="form-check-input" />
+                                    <input asp-for="@Model.RolePermissionGroups[i].Actions[ii].Action" type="hidden" />
+                                    @Model.RolePermissionGroups[i].Actions[ii].Action
+
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="col-sm-12" style="padding: 20px 20px 0px 0px">
+                <button type="submit" id="save" class="btn btn-success">
+                    Save
+                </button>
+                <a class="btn btn-primary" style="width:auto" asp-controller="Roles" asp-action="Index" close-modal>Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>

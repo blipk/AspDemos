@@ -1,0 +1,51 @@
+﻿@model List<AspDemos.Areas.Admin.Models.UsersViewModel>
+@{
+    ViewData["Title"] = "Users";
+}
+<h1>Users</h1>
+<table class="table table-striped" id="userTable">
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Email</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Roles</th>
+            <th style="width:10%">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model) {
+            <tr>
+                <td>
+                    <div class="row">
+                        <div class="col-sm">
+                            <a>@user.ApplicationUser.UserName</a>
+                            <br>
+                            <small>@user.ApplicationUser.Id</small>
+                        </div>
+                    </div>
+                </td>
+                <td><a>@user.ApplicationUser.Email</a></td>
+                <td>@user.ApplicationUser.FirstName</td>
+                <td>@user.ApplicationUser.LastName</td>
+                <td>@string.Join(", ", user.Roles.ToList())</td>
+                <td>
+                    <div class="btn-group dropdown">
+                        <button type="button" class="btn btn-default dropdown-toggle" id="userActionsDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Action
+                        </button>
+                        <div class="dropdown-menu shadow animated--grow-in" aria-labelledby="userActionsDropdown">
+                            <a style='margin-right:16px' class="dropdown-item" asp-controller="Users" asp-action="Delete" asp-route-id="@user.ApplicationUser.Id" open-modal>
+                                Delete
+                            </a>
+                            <a style='margin-right:16px' class="dropdown-item" asp-controller="Users" asp-action="ManageRoles" asp-route-userId="@user.ApplicationUser.Id" open-modal>
+                                Manage Roles
+                            </a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

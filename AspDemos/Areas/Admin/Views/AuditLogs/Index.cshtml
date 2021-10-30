@@ -1,0 +1,87 @@
+﻿@{
+    ViewData["Title"] = "Audit Logs";
+    ViewData["Caption"] = "View 250 recent audit logs";
+}
+<div class="card">
+    <div id="viewAll" class="card-body table-responsive">
+        <table class="table table-striped" id="logTable">
+            <thead>
+                <tr>
+                    <th>
+                        Id
+                    </th>
+
+                    <th>
+                        Date
+                    </th>
+                    <th>
+                        User Id
+                    </th>
+                    <th>
+                        Action
+                    </th>
+                    <th>
+                        Table
+                    </th>
+                    <th>
+                        Key
+                    </th>
+                    <th>
+                        Data
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var log in Model) {
+                    <tr>
+                        <td>
+                            @log.Id
+                        </td>
+                        <td>
+                            <a>
+                                <small class="badge bg-warning">Universal</small> @log.DateTime.ToString("dd/MM/yyyy h:mm:ss tt")
+                            </a>
+                            <br>
+                            <small>
+                                @{
+                                    DateTime runtimeKnowsThisIsUtc = DateTime.SpecifyKind(log.DateTime, DateTimeKind.Utc);
+                                    DateTime localVersion = runtimeKnowsThisIsUtc.ToLocalTime();
+                                }
+                                <small class="badge bg-success">Local</small> @localVersion.ToString("dd/MM/yyyy h:mm:ss tt")
+                            </small>
+                        </td>
+                        <td>
+                            @log.UserId
+                        </td>
+                        <td>
+                            @log.Type
+                        </td>
+                        <td>
+                            @log.TableName
+                        </td>
+                        <td>
+                            @log.PrimaryKey
+                        </td>
+                        <td>
+                            <p>
+                                <small>Affected Columns</small>
+                                <br/>
+                                @log.AffectedColumns
+                            </p>
+                            <p>
+                                <small>Old Values</small>
+                                <br/>
+                                @log.OldValues
+                            </p>
+                            <p>
+                                <small>New Values</small>
+                                <br/>
+                                @log.NewValues
+                            </p>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

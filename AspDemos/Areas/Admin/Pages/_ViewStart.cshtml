@@ -1,0 +1,7 @@
+﻿@{
+    if (Context.Request.Query["modalView"] == "true") {
+        Layout = "~/Areas/Admin/Pages/Shared/_LayoutBaseAdmin.cshtml";
+    } else {
+        Layout = "~/Areas/Admin/Pages/Shared/_LayoutAdmin.cshtml";
+    }
+}

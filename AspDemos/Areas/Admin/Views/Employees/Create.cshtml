@@ -1,0 +1,96 @@
+﻿@model AspDemos.Areas.Admin.Models.Employees.EmployeeViewModel
+
+@{
+    ViewData["Title"] = "Create Employee";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2>@ViewData["Title"]</h2>
+    </div>
+
+
+    <div class="card-body">
+        <div id="register">
+            <partial name="../Accounts/Register" model="new AspDemos.Areas.Admin.Models.Identity.RegisterViewModel()" />
+        </div>
+        <form method="post" asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-floating">
+                <label asp-for="Employee.EmployeeNumber" class="control-label"></label>
+                <input asp-for="Employee.EmployeeNumber" class="form-control" />
+                <span asp-validation-for="Employee.EmployeeNumber" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <label asp-for="Employee.Address.NumberAndStreet" class="control-label"></label>
+                <input asp-for="Employee.Address.NumberAndStreet" class="form-control" />
+                <span asp-validation-for="Employee.Address.NumberAndStreet" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <label asp-for="Employee.Address.Suburb" class="control-label"></label>
+                <input asp-for="Employee.Address.Suburb" class="form-control" />
+                <span asp-validation-for="Employee.Address.Suburb" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <label asp-for="Employee.Address.City" class="control-label"></label>
+                <input asp-for="Employee.Address.City" class="form-control" />
+                <span asp-validation-for="Employee.Address.City" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <label asp-for="Employee.Address.State" class="control-label"></label>
+                <input asp-for="Employee.Address.State" class="form-control" />
+                <span asp-validation-for="Employee.Address.State" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <label asp-for="Employee.Address.PostCode" class="control-label"></label>
+                <input asp-for="Employee.Address.PostCode" class="form-control" />
+                <span asp-validation-for="Employee.Address.PostCode" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <label asp-for="Employee.FacebookProfile" class="control-label"></label>
+                <input asp-for="Employee.FacebookProfile" class="form-control" />
+                <span asp-validation-for="Employee.FacebookProfile" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <label asp-for="Employee.TwitterProfile" class="control-label"></label>
+                <input asp-for="Employee.TwitterProfile" class="form-control" />
+                <span asp-validation-for="Employee.TwitterProfile" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <label asp-for="Employee.InstagramProfile" class="control-label"></label>
+                <input asp-for="Employee.InstagramProfile" class="form-control" />
+                <span asp-validation-for="Employee.InstagramProfile" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <label asp-for="Employee.LinkedInProfile" class="control-label"></label>
+                <input asp-for="Employee.LinkedInProfile" class="form-control" />
+                <span asp-validation-for="Employee.LinkedInProfile" class="text-danger"></span>
+            </div>
+            <div>
+                @for (int i = 0; i < Model.Roles.Count; i++) {
+                    <div class="form-check m-1">
+                        <input type="hidden" asp-for="@Model.Roles[i].RoleId" />
+                        <input type="hidden" asp-for="@Model.Roles[i].RoleName" />
+                        <input asp-for="@Model.Roles[i].Selected" class="form-check-input" />
+                        <label class="form-check-label" asp-for="@Model.Roles[i].Selected">
+                            @Model.Roles[i].RoleName
+                        </label>
+                    </div>
+                }
+            </div>
+        </form>
+    </div>
+
+    <div class="card-footer">
+        <input type="submit" id="submitButton" value="Create" class="btn btn-primary" />
+        <a class="btn btn-primary" style="width:auto" asp-action="Index" close-modal>Cancel</a>
+    </div>
+
+</div>
+
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}
